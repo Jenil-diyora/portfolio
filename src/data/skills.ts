@@ -8,7 +8,6 @@ import {
     Cpu,
     Globe,
     Workflow,
-    Binary,
     Layers,
     Wrench,
     Zap,
