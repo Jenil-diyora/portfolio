@@ -18,7 +18,7 @@ export const SectionWrapper = ({
     const isInView = useInView(ref, { once: true, amount: 0.2 });
 
     return (
-        <section id={id} className={`relative z-10 py-20 ${className}`}>
+        <section id={id} className={`relative z-10 py-16 md:py-24 lg:py-32 w-full overflow-hidden ${className}`}>
             <motion.div
                 ref={ref}
                 initial={{ opacity: 0, y: 50 }}

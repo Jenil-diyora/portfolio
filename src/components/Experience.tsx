@@ -71,8 +71,8 @@ export const Experience = () => {
                                 <div className="md:hidden absolute left-8 top-8 bottom-0 w-[1px] bg-white/5" />
 
                                 {/* Content Card */}
-                                <div className={`ml-20 md:ml-0 md:w-[45%] ${index % 2 === 0 ? 'md:pr-16 md:text-right' : 'md:pl-16 md:text-left'}`}>
-                                    <div className="glass-card p-8 rounded-2xl hover:bg-rich-surface/60 transition-all duration-300 group cursor-default relative overflow-hidden bg-rich-surface/30">
+                                <div className={`ml-12 md:ml-0 md:w-[45%] ${index % 2 === 0 ? 'md:pr-16 md:text-right' : 'md:pl-16 md:text-left'}`}>
+                                    <div className="glass-card p-6 md:p-8 rounded-2xl hover:bg-rich-surface/60 transition-all duration-300 group cursor-default relative overflow-hidden bg-rich-surface/30">
 
                                         <div className={`flex flex-col gap-1 mb-6 relative z-10 ${index % 2 === 0 ? 'md:items-end' : 'md:items-start'}`}>
                                             <h3 className="text-2xl font-bold text-white group-hover:text-accent-primary-muted transition-colors tracking-tight">

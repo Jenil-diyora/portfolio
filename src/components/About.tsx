@@ -34,7 +34,7 @@ export const About = () => {
                         <div className="h-px bg-white/10 flex-grow" />
                     </motion.h2>
 
-                    <div className="grid md:grid-cols-[1fr_2fr] gap-12 items-start">
+                    <div className="grid md:grid-cols-[1fr_2fr] gap-8 md:gap-12 items-start">
                         <div className="relative group">
                             <div className="relative h-full bg-rich-surface/50 border border-white/5 rounded-2xl p-8 flex flex-col gap-6 hover:bg-rich-surface/80 transition-colors duration-500">
                                 <div className="space-y-4">

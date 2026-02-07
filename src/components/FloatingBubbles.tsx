@@ -75,11 +75,13 @@ export const FloatingBubbles = () => {
             const randomSkill = techSkills[Math.floor(Math.random() * techSkills.length)];
             if (!selectedSkills.has(randomSkill.name)) {
                 selectedSkills.add(randomSkill.name);
+                const size = window.innerWidth < 768 ? Math.random() * 30 + 50 : Math.random() * 40 + 70;
+                const maxX = 100 - (size / window.innerWidth * 100) - 5;
                 initialBubbles.push({
                     id: Date.now() + initialBubbles.length,
-                    x: Math.random() * 30 + 65,
+                    x: Math.max(5, Math.random() * maxX),
                     y: window.innerHeight - (Math.random() * window.innerHeight * 0.3),
-                    size: Math.random() * 50 + 90,
+                    size,
                     speed: Math.random() * 20 + 50,
                     delay: initialBubbles.length * 0.5,
                     logo: randomSkill.logo,
@@ -103,12 +105,14 @@ export const FloatingBubbles = () => {
                 if (availableSkills.length === 0) return prev;
 
                 const randomSkill = availableSkills[Math.floor(Math.random() * availableSkills.length)];
+                const size = window.innerWidth < 768 ? Math.random() * 30 + 50 : Math.random() * 40 + 70;
+                const maxX = 100 - (size / window.innerWidth * 100) - 5;
 
                 return [...prev, {
                     id: Date.now() + Math.random(),
-                    x: Math.random() * 30 + 65,
+                    x: Math.max(5, Math.random() * maxX),
                     y: window.innerHeight + 50,
-                    size: Math.random() * 50 + 90,
+                    size,
                     speed: Math.random() * 20 + 50,
                     delay: 0,
                     logo: randomSkill.logo,
@@ -117,7 +121,7 @@ export const FloatingBubbles = () => {
             });
         };
 
-        const interval = setInterval(generateBubble, 5000);
+        const interval = setInterval(generateBubble, 8000);
         return () => clearInterval(interval);
     }, []);
 
@@ -144,7 +148,7 @@ export const FloatingBubbles = () => {
     }, []);
 
     return (
-        <div ref={containerRef} className="fixed inset-0 pointer-events-none z-50 overflow-hidden h-screen w-screen">
+        <div ref={containerRef} className="fixed inset-0 pointer-events-none z-[5] overflow-hidden w-full h-full">
             {/* Bubble Generator */}
             <div className="fixed bottom-4 right-[20%] w-32 h-32 pointer-events-none">
                 <motion.div

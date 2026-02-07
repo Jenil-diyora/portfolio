@@ -78,7 +78,9 @@ export const Navbar = () => {
             <motion.nav
                 initial={{ y: -100 }}
                 animate={{ y: 0 }}
-                className={`fixed top-0 left-0 w-full z-[100] transition-all duration-500 ${scrolled ? 'py-4 bg-[#0b0616]/80 backdrop-blur-xl border-b border-white/5' : 'py-8'
+                className={`fixed top-0 left-0 w-full z-[100] transition-all duration-500 ${scrolled
+                    ? 'py-4 bg-[#0b0616]/80 backdrop-blur-xl border-b border-white/5'
+                    : 'py-4 lg:py-8'
                     }`}
             >
                 <div className="container mx-auto px-6 flex justify-between items-center">
@@ -166,7 +168,7 @@ export const Navbar = () => {
                         initial={{ opacity: 0, y: -20 }}
                         animate={{ opacity: 1, y: 0 }}
                         exit={{ opacity: 0, y: -20 }}
-                        className="fixed inset-0 z-[90] lg:hidden bg-[#0b0616] pt-32 px-6 flex flex-col gap-8"
+                        className="fixed inset-0 z-[90] lg:hidden bg-[#0b0616] pt-24 pb-12 px-6 flex flex-col gap-8 overflow-y-auto overflow-x-hidden"
                     >
                         <div className="absolute inset-0 bg-[radial-gradient(ellipse_80%_80%_at_50%_-20%,rgba(120,119,198,0.15),rgba(255,255,255,0))] pointer-events-none" />
 
@@ -176,8 +178,8 @@ export const Navbar = () => {
                                     key={item.id}
                                     onClick={() => scrollToSection(item.id)}
                                     className={`text-left px-6 py-4 rounded-2xl text-2xl font-bold transition-all ${activeSection === item.id
-                                            ? 'bg-accent-primary/20 text-white border border-accent-primary/30'
-                                            : 'text-gray-400 hover:text-white hover:bg-white/5'
+                                        ? 'bg-accent-primary/20 text-white border border-accent-primary/30'
+                                        : 'text-gray-400 hover:text-white hover:bg-white/5'
                                         }`}
                                 >
                                     {item.label}

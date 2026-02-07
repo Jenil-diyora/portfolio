@@ -35,7 +35,7 @@ export const Hero = () => {
         <section
             id="home"
             ref={containerRef}
-            className="min-h-screen flex flex-col items-center justify-center relative overflow-hidden bg-rich-dark pt-32 md:pt-40 pb-20 md:pb-32"
+            className="min-h-screen w-full flex flex-col items-center justify-center relative overflow-hidden bg-rich-dark pt-24 md:pt-40 pb-20 md:pb-32"
         >
             {/* Dynamic Interactive Background */}
             <div className="absolute inset-0 z-0 pointer-events-none">
@@ -88,20 +88,20 @@ export const Hero = () => {
             {/* Content */}
             <motion.div
                 style={{ y, opacity }}
-                className="z-10 text-center px-6 max-w-6xl mx-auto flex flex-col items-center gap-6 md:gap-10"
+                className="z-10 container mx-auto px-6 flex flex-col items-center gap-8 md:gap-12"
             >
                 <motion.div
                     initial={{ opacity: 0, scale: 0.95 }}
                     animate={{ opacity: 1, scale: 1 }}
                     transition={{ duration: 1.2, ease: [0.22, 1, 0.36, 1] }}
-                    className="relative"
+                    className="relative w-full"
                 >
-                    <span className="text-accent-primary font-bold tracking-[0.2em] sm:tracking-[0.3em] uppercase text-[10px] sm:text-xs mb-4 block animate-pulse">
+                    <span className="text-accent-primary font-bold tracking-[0.2em] sm:tracking-[0.3em] uppercase text-[10px] sm:text-xs mb-4 block animate-pulse text-center">
                         Engineering the Future
                     </span>
-                    <h1 className="text-4xl sm:text-6xl md:text-8xl lg:text-[10rem] font-bold tracking-tight font-heading text-white leading-[0.9] md:leading-none">
+                    <h1 className="text-4xl sm:text-5xl md:text-7xl lg:text-8xl xl:text-[10rem] font-bold tracking-tight font-heading text-white leading-[1.1] w-full text-center flex flex-wrap justify-center items-center gap-x-4 md:gap-x-8">
                         {name.split(" ").map((word, wordIdx) => (
-                            <span key={wordIdx} className="inline-block whitespace-nowrap mr-4 sm:mr-8 last:mr-0">
+                            <span key={wordIdx} className="inline-block whitespace-nowrap">
                                 {word.split("").map((letter, i) => (
                                     <motion.span
                                         key={i}
@@ -126,9 +126,9 @@ export const Hero = () => {
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: 0.8, duration: 0.8 }}
-                    className="flex flex-col items-center gap-6 md:gap-8"
+                    className="flex flex-col items-center w-full max-w-4xl"
                 >
-                    <p className="text-rich-text-muted text-base sm:text-lg md:text-2xl font-light tracking-wide max-w-3xl leading-relaxed px-4">
+                    <p className="text-rich-text-muted text-sm sm:text-lg md:text-xl lg:text-2xl font-light tracking-wide leading-relaxed text-center px-4">
                         Software Engineer @ <span className="text-white font-medium">Engross Infotech</span> specializing in
                         <span className="text-white font-medium"> React.js</span>,
                         <span className="text-white font-medium"> .NET Core</span>, and building
@@ -141,17 +141,17 @@ export const Hero = () => {
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
                     transition={{ delay: 1.4, duration: 1 }}
-                    className="mt-8 md:mt-16 w-full max-w-4xl overflow-hidden relative"
+                    className="mt-8 md:mt-12 w-full max-w-4xl overflow-hidden relative mx-auto"
                 >
                     <div className="flex items-center gap-4 mb-4 justify-center">
                         <div className="w-8 h-[1px] bg-white/10" />
-                        <span className="text-[10px] text-gray-400 uppercase tracking-widest font-bold">Tech Stack</span>
+                        <span className="text-[10px] text-gray-500 uppercase tracking-widest font-bold">Tech Stack</span>
                         <div className="w-8 h-[1px] bg-white/10" />
                     </div>
 
-                    <div className="flex w-max animate-marquee gap-8 md:gap-10 py-4 md:py-6">
+                    <div className="flex w-max animate-marquee gap-6 sm:gap-10 py-10">
                         {[...Array(2)].map((_, i) => (
-                            <div key={i} className="flex gap-10 md:gap-16 mx-4">
+                            <div key={i} className="flex gap-8 sm:gap-16 mx-4">
                                 <TechIcon Icon={FaReact} name="React JS" />
                                 <TechIcon Icon={SiTypescript} name="TypeScript" />
                                 <TechIcon Icon={FaNodeJs} name="Node.js" />
@@ -172,13 +172,13 @@ export const Hero = () => {
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ delay: 2.2, duration: 1 }}
-                className="absolute bottom-12 left-0 w-full z-10 flex flex-col items-center gap-4"
+                className="absolute bottom-8 md:bottom-12 left-0 w-full z-10 flex flex-col items-center gap-4"
             >
-                <div className="w-6 h-10 rounded-full border-2 border-white/10 flex justify-center p-2">
+                <div className="w-5 h-8 md:w-6 md:h-10 rounded-full border-2 border-white/10 flex justify-center p-1.5 md:p-2">
                     <motion.div
-                        animate={{ y: [0, 12, 0] }}
+                        animate={{ y: [0, 8, 0] }}
                         transition={{ duration: 1.5, repeat: Infinity }}
-                        className="w-1.5 h-1.5 rounded-full bg-accent-primary"
+                        className="w-1 h-1 md:w-1.5 md:h-1.5 rounded-full bg-accent-primary"
                     />
                 </div>
             </motion.div>
@@ -191,7 +191,7 @@ const TechIcon = ({ Icon, name }: { Icon: any; name: string }) => (
         <div className="p-4 rounded-2xl bg-rich-surface/40 border border-white/5 backdrop-blur-sm transition-all duration-500 group-hover:border-accent-primary/20 group-hover:bg-rich-surface/80 group-hover:shadow-soft-glow">
             <Icon className="text-3xl text-slate-500 group-hover:text-white transition-colors duration-500" />
         </div>
-        <span className="text-xs font-medium text-slate-500 group-hover:text-accent-primary-muted transition-colors opacity-0 group-hover:opacity-100 transform translate-y-2 group-hover:translate-y-0 duration-500 absolute -bottom-8">
+        <span className="text-xs font-medium text-slate-500 group-hover:text-accent-primary-muted transition-colors opacity-0 group-hover:opacity-100 transform translate-y-2 group-hover:translate-y-0 duration-500 absolute -bottom-6 left-1/2 -translate-x-1/2 whitespace-nowrap">
             {name}
         </span>
     </div>
