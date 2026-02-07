@@ -69,18 +69,23 @@ export const FloatingBubbles = () => {
     // Generate initial bubbles on mount
     useEffect(() => {
         const initialBubbles: Bubble[] = [];
-        for (let i = 0; i < 5; i++) {
+        const selectedSkills = new Set();
+
+        while (initialBubbles.length < 2) {
             const randomSkill = techSkills[Math.floor(Math.random() * techSkills.length)];
-            initialBubbles.push({
-                id: Date.now() + i,
-                x: Math.random() * 30 + 65,
-                y: window.innerHeight - (Math.random() * window.innerHeight * 0.3),
-                size: Math.random() * 50 + 90,
-                speed: Math.random() * 20 + 50,
-                delay: i * 0.5,
-                logo: randomSkill.logo,
-                name: randomSkill.name
-            });
+            if (!selectedSkills.has(randomSkill.name)) {
+                selectedSkills.add(randomSkill.name);
+                initialBubbles.push({
+                    id: Date.now() + initialBubbles.length,
+                    x: Math.random() * 30 + 65,
+                    y: window.innerHeight - (Math.random() * window.innerHeight * 0.3),
+                    size: Math.random() * 50 + 90,
+                    speed: Math.random() * 20 + 50,
+                    delay: initialBubbles.length * 0.5,
+                    logo: randomSkill.logo,
+                    name: randomSkill.name
+                });
+            }
         }
         setBubbles(initialBubbles);
     }, []);
@@ -90,9 +95,14 @@ export const FloatingBubbles = () => {
             if (document.hidden) return;
 
             setBubbles(prev => {
-                if (prev.length >= 10) return prev;
+                if (prev.length >= 4) return prev;
 
-                const randomSkill = techSkills[Math.floor(Math.random() * techSkills.length)];
+                const existingNames = new Set(prev.map(b => b.name));
+                const availableSkills = techSkills.filter(s => !existingNames.has(s.name));
+
+                if (availableSkills.length === 0) return prev;
+
+                const randomSkill = availableSkills[Math.floor(Math.random() * availableSkills.length)];
 
                 return [...prev, {
                     id: Date.now() + Math.random(),

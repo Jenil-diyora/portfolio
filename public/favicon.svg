@@ -1,24 +1,11 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
   <defs>
-    <linearGradient id="grad" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#bfdbfe" />
-      <stop offset="100%" stop-color="#ffffff" />
+    <linearGradient id="gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#9333ea;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#7c3aed;stop-opacity:1" />
     </linearGradient>
-    <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
-      <feGaussianBlur stdDeviation="3" result="blur"/>
-      <feFlood flood-color="#ffffff" result="color"/>
-      <feComposite in="color" in2="blur" operator="in" result="shadow"/>
-      <feMerge>
-        <feMergeNode in="shadow"/>
-        <feMergeNode in="SourceGraphic"/>
-      </feMerge>
-    </filter>
   </defs>
-  
-  <!-- Solid background circle for visibility on dark/light tabs -->
-  <circle cx="50" cy="50" r="45" fill="#3b82f6" stroke="white" stroke-width="4"/>
-  
-  <!-- Initials -->
-  <text x="50" y="68" font-family="Arial, sans-serif" font-size="50" font-weight="900" 
-        fill="url(#grad)" text-anchor="middle" filter="url(#glow)">JD</text>
+  <rect width="100" height="100" rx="20" fill="#0b0616"/>
+  <rect width="90" height="90" x="5" y="5" rx="18" fill="url(#gradient)" opacity="0.1"/>
+  <text x="50%" y="50%" dominant-baseline="central" text-anchor="middle" font-family="Arial, sans-serif" font-weight="900" font-size="50" fill="url(#gradient)">JD</text>
 </svg>

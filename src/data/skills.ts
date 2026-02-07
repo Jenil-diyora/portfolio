@@ -12,7 +12,8 @@ import {
     Layers,
     Wrench,
     Zap,
-    Box
+    Box,
+    Smartphone
 } from 'lucide-react';
 import type { ElementType } from 'react';
 
@@ -27,7 +28,8 @@ export const skillsData: Record<string, Skill[]> = {
         { name: "CSS", icon: Layout },
         { name: "JavaScript", icon: FileType },
         { name: "TypeScript", icon: Code2 },
-        { name: "React.js", icon: Code2 },
+        { name: "React JS", icon: Code2 },
+        { name: "React Native", icon: Smartphone },
         { name: "Tailwind CSS", icon: Layout },
     ],
     backend: [
@@ -41,6 +43,7 @@ export const skillsData: Record<string, Skill[]> = {
     database: [
         { name: "MS SQL Server", icon: Database },
         { name: "PostgreSQL", icon: Database },
+        { name: "Firebase", icon: Zap },
     ],
     core: [
         { name: "OOP", icon: Box },

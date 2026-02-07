@@ -33,7 +33,7 @@
   }
 
   .glass-card {
-    @apply bg-rich-surface/50 backdrop-blur-sm border border-white/5 shadow-xl transition-all duration-300 hover:border-accent-primary/20 hover:shadow-soft-glow;
+    @apply bg-white/5 backdrop-blur-md border border-white/10 rounded-2xl;
   }
 
   .glass-dark {
@@ -257,4 +257,105 @@ html.lenis {
   100% {
     rotate: 360deg;
   }
+}
+
+@keyframes twinkle {
+
+  0%,
+  100% {
+    opacity: 0.3;
+  }
+
+  50% {
+    opacity: 0.8;
+  }
+}
+
+.animate-twinkle {
+  animation: twinkle 3s ease-in-out infinite;
+}
+
+/* --- Mailing Animation (GSAP Dashed Route) --- */
+.mail-btn {
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  user-select: none;
+  font-size: 18px;
+  font-weight: 600;
+  color: white;
+  text-align: center;
+  background: linear-gradient(135deg, rgba(124, 58, 237, 0.8), rgba(91, 33, 182, 0.8));
+  backdrop-filter: blur(10px);
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
+  border-radius: 12px;
+  height: 64px;
+  width: 100%;
+  transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+  position: relative;
+  cursor: pointer;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.route-container {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  opacity: 0;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.route-svg {
+  width: 200px;
+  height: 60px;
+  overflow: visible;
+}
+
+.dashed-path {
+  fill: none;
+  stroke: white;
+  stroke-width: 1px;
+  stroke-dasharray: 4, 3;
+  opacity: 0.6;
+}
+
+.mask-path {
+  fill: none;
+  stroke: black;
+  stroke-width: 4px;
+}
+
+.icon-start,
+.icon-end {
+  position: absolute;
+  color: white;
+  filter: drop-shadow(0 0 8px rgba(124, 58, 237, 0.6));
+  z-index: 12;
+}
+
+.joint-dot {
+  fill: #7c3aed;
+  stroke: white;
+  stroke-width: 1px;
+  filter: drop-shadow(0 0 4px rgba(124, 58, 237, 0.8));
+}
+
+.btn-text {
+  transition: all 0.3s ease;
+  z-index: 5;
+}
+
+.mail-btn:hover {
+  background: linear-gradient(135deg, rgba(139, 92, 246, 0.9), rgba(109, 40, 217, 0.9));
+  box-shadow: 0 12px 40px 0 rgba(124, 58, 237, 0.25);
+}
+
+.mail-btn:active {
+  transform: scale(0.98);
 }

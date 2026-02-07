@@ -1,10 +1,11 @@
-import { useRef } from 'react';
+import { useRef, useState, useEffect } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
-import { FaReact, FaNodeJs, FaCode } from 'react-icons/fa';
-import { SiTypescript, SiDotnet, SiFastapi, SiPostgresql, SiTailwindcss, SiDocker } from 'react-icons/si';
+import { FaReact, FaNodeJs } from 'react-icons/fa';
+import { SiTypescript, SiDotnet, SiFastapi, SiPostgresql, SiTailwindcss, SiDocker, SiFirebase } from 'react-icons/si';
 
 export const Hero = () => {
     const containerRef = useRef<HTMLDivElement>(null);
+    const name = "JENIL DIYORA";
 
     const { scrollYProgress } = useScroll({
         target: containerRef,
@@ -14,21 +15,73 @@ export const Hero = () => {
     const y = useTransform(scrollYProgress, [0, 1], ["0%", "50%"]);
     const opacity = useTransform(scrollYProgress, [0, 1], [1, 0]);
 
-    const name = "JENIL DIYORA";
+    const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
+
+    useEffect(() => {
+        const handleMouseMove = (e: MouseEvent) => {
+            if (!containerRef.current) return;
+            const rect = containerRef.current.getBoundingClientRect();
+            setMousePos({
+                x: e.clientX - rect.left,
+                y: e.clientY - rect.top
+            });
+        };
+
+        window.addEventListener('mousemove', handleMouseMove);
+        return () => window.removeEventListener('mousemove', handleMouseMove);
+    }, []);
 
     return (
         <section
+            id="home"
             ref={containerRef}
-            className="min-h-screen flex flex-col items-center justify-center relative overflow-hidden bg-rich-dark py-32"
+            className="min-h-screen flex flex-col items-center justify-center relative overflow-hidden bg-rich-dark pt-40 pb-32"
         >
-            {/* Dynamic Background */}
+            {/* Dynamic Interactive Background */}
             <div className="absolute inset-0 z-0 pointer-events-none">
-                <div className="absolute inset-0 bg-grid-white/[0.03] bg-[size:60px_60px]" />
-                <div className="absolute top-0 left-0 w-full h-full bg-[radial-gradient(ellipse_80%_80%_at_50%_-20%,rgba(120,119,198,0.15),rgba(255,255,255,0))]" />
-                <div className="absolute bottom-0 left-0 w-full h-full bg-[radial-gradient(ellipse_80%_80%_at_50%_120%,rgba(124,58,237,0.1),rgba(255,255,255,0))]" />
+                {/* Layer 1: Base Dim Dots (Static) */}
+                <div
+                    className="absolute inset-0 bg-[radial-gradient(#ffffff08_1px,transparent_1px)] [background-size:24px_24px]"
+                    style={{
+                        maskImage: 'linear-gradient(to bottom, black 70%, transparent 100%)',
+                        WebkitMaskImage: 'linear-gradient(to bottom, black 70%, transparent 100%)'
+                    }}
+                />
+
+                {/* Layer 2: Default Random Twinkling Dots (White) */}
+                <div
+                    className="absolute inset-0 bg-[radial-gradient(#ffffff15_1.5px,transparent_1.5px)] [background-size:48px_48px] animate-twinkle"
+                    style={{
+                        maskImage: 'linear-gradient(to bottom, black 70%, transparent 100%)',
+                        WebkitMaskImage: 'linear-gradient(to bottom, black 70%, transparent 100%)'
+                    }}
+                />
+
+                {/* Layer 3: Randomized Purple Twinkling Dots (New) */}
+                <div
+                    className="absolute inset-0 bg-[radial-gradient(#9333ea30_1.5px,transparent_1.5px)] [background-size:32px_32px] animate-twinkle"
+                    style={{
+                        animationDelay: '1.5s',
+                        maskImage: 'linear-gradient(to bottom, black 70%, transparent 100%)',
+                        WebkitMaskImage: 'linear-gradient(to bottom, black 70%, transparent 100%)'
+                    }}
+                />
+
+                {/* Layer 4: Interactive Reactive Layer (Dots light up purple around cursor) */}
+                <motion.div
+                    className="absolute inset-0 z-0"
+                    style={{
+                        background: 'radial-gradient(#9333ea 1.5px, transparent 1.5px)',
+                        backgroundSize: '24px 24px',
+                        maskImage: `radial-gradient(200px circle at ${mousePos.x}px ${mousePos.y}px, black 0%, transparent 100%)`,
+                        WebkitMaskImage: `radial-gradient(200px circle at ${mousePos.x}px ${mousePos.y}px, black 0%, transparent 100%)`
+                    }}
+                />
+
+                <div className="absolute top-0 left-0 w-full h-full bg-[radial-gradient(ellipse_80%_80%_at_50%_-20%,rgba(120,119,198,0.1),rgba(255,255,255,0))]" />
             </div>
 
-            {/* Glowing Orbs - Subtle */}
+            {/* Glowing Orbs */}
             <div className="absolute top-1/4 -left-20 w-96 h-96 bg-accent-primary/20 rounded-full mix-blend-screen filter blur-[128px] opacity-40 animate-pulse-glow" style={{ animationDuration: '7s' }} />
             <div className="absolute bottom-1/4 -right-20 w-96 h-96 bg-accent-gold/10 rounded-full mix-blend-screen filter blur-[128px] opacity-30 animate-pulse-glow" style={{ animationDuration: '10s', animationDelay: '2s' }} />
 
@@ -37,66 +90,77 @@ export const Hero = () => {
                 style={{ y, opacity }}
                 className="z-10 text-center px-4 max-w-6xl mx-auto flex flex-col items-center gap-10"
             >
-                <div className="relative group perspective-1000">
-                    <motion.div
-                        initial={{ opacity: 0, scale: 0.95 }}
-                        animate={{ opacity: 1, scale: 1 }}
-                        transition={{ duration: 1.2, ease: [0.22, 1, 0.36, 1] }}
-                        className="relative z-20"
-                    >
-                        <h1 className="text-5xl md:text-8xl lg:text-9xl font-bold tracking-tight font-heading text-white drop-shadow-lg">
-                            {name.split("").map((letter, i) => (
-                                <motion.span
-                                    key={i}
-                                    initial={{ opacity: 0, y: 40 }}
-                                    animate={{ opacity: 1, y: 0 }}
-                                    transition={{
-                                        duration: 0.8,
-                                        delay: i * 0.03,
-                                        ease: "easeOut"
-                                    }}
-                                    className="inline-block hover:text-accent-primary-muted transition-colors duration-500 cursor-default"
-                                >
-                                    {letter === " " ? "\u00A0" : letter}
-                                </motion.span>
-                            ))}
-                        </h1>
-                    </motion.div>
-                </div>
+                <motion.div
+                    initial={{ opacity: 0, scale: 0.95 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    transition={{ duration: 1.2, ease: [0.22, 1, 0.36, 1] }}
+                    className="relative"
+                >
+                    <span className="text-accent-primary font-bold tracking-[0.3em] uppercase text-xs mb-4 block animate-pulse">
+                        Engineering the Future
+                    </span>
+                    <h1 className="text-6xl md:text-8xl lg:text-[10rem] font-bold tracking-tight font-heading text-white leading-none">
+                        {name.split(" ").map((word, wordIdx) => (
+                            <span key={wordIdx} className="inline-block whitespace-nowrap mr-8 last:mr-0">
+                                {word.split("").map((letter, i) => (
+                                    <motion.span
+                                        key={i}
+                                        initial={{ opacity: 0, y: 40 }}
+                                        animate={{ opacity: 1, y: 0 }}
+                                        transition={{
+                                            duration: 0.8,
+                                            delay: (wordIdx * word.length + i) * 0.05,
+                                            ease: [0.22, 1, 0.36, 1]
+                                        }}
+                                        className="inline-block hover:text-accent-primary transition-all duration-300 transform hover:-translate-y-2 cursor-default"
+                                    >
+                                        {letter}
+                                    </motion.span>
+                                ))}
+                            </span>
+                        ))}
+                    </h1>
+                </motion.div>
 
                 <motion.div
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
-                    transition={{ delay: 0.6, duration: 0.8 }}
-                    className="flex flex-col md:flex-row items-center gap-4 text-lg md:text-xl font-light tracking-wide text-rich-text-muted"
+                    transition={{ delay: 0.8, duration: 0.8 }}
+                    className="flex flex-col items-center gap-8"
                 >
-                    <span className="text-accent-primary font-medium tracking-widest uppercase">Full Stack Engineer</span>
-                    <span className="hidden md:inline w-1.5 h-1.5 rounded-full bg-slate-700" />
-                    <span className="text-slate-400">Building Digital Experiences</span>
+                    <p className="text-rich-text-muted text-lg md:text-2xl font-light tracking-wide max-w-3xl leading-relaxed">
+                        Software Engineer @ <span className="text-white font-medium">Engross Infotech</span> specializing in
+                        <span className="text-white font-medium"> React.js</span>,
+                        <span className="text-white font-medium"> .NET Core</span>, and building
+                        <span className="text-white font-medium"> fluid user experiences</span>.
+                    </p>
                 </motion.div>
 
-                {/* Tech Marquee with Icons */}
+                {/* Tech Marquee */}
                 <motion.div
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
-                    transition={{ delay: 1, duration: 1 }}
-                    className="mt-20 w-full max-w-5xl overflow-hidden relative"
+                    transition={{ delay: 1.4, duration: 1 }}
+                    className="mt-16 w-full max-w-4xl overflow-hidden relative"
                 >
-                    <div className="absolute left-0 top-0 w-32 h-full bg-gradient-to-r from-rich-dark to-transparent z-10" />
-                    <div className="absolute right-0 top-0 w-32 h-full bg-gradient-to-l from-rich-dark to-transparent z-10" />
+                    <div className="flex items-center gap-4 mb-4 justify-center">
+                        <div className="w-8 h-[1px] bg-white/10" />
+                        <span className="text-[10px] text-gray-500 uppercase tracking-widest font-bold">Tech Stack</span>
+                        <div className="w-8 h-[1px] bg-white/10" />
+                    </div>
 
-                    <div className="flex w-max animate-marquee gap-10 py-4">
+                    <div className="flex w-max animate-marquee gap-10 py-6">
                         {[...Array(2)].map((_, i) => (
                             <div key={i} className="flex gap-16 mx-4">
-                                <TechIcon Icon={FaReact} name="React" />
+                                <TechIcon Icon={FaReact} name="React JS" />
                                 <TechIcon Icon={SiTypescript} name="TypeScript" />
                                 <TechIcon Icon={FaNodeJs} name="Node.js" />
                                 <TechIcon Icon={SiDotnet} name=".NET" />
                                 <TechIcon Icon={SiFastapi} name="FastAPI" />
                                 <TechIcon Icon={SiPostgresql} name="PostgreSQL" />
+                                <TechIcon Icon={SiFirebase} name="Firebase" />
                                 <TechIcon Icon={SiTailwindcss} name="Tailwind" />
                                 <TechIcon Icon={SiDocker} name="Docker" />
-                                <TechIcon Icon={FaCode} name="Clean Code" />
                             </div>
                         ))}
                     </div>
@@ -107,11 +171,16 @@ export const Hero = () => {
             <motion.div
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
-                transition={{ delay: 2, duration: 1 }}
+                transition={{ delay: 2.2, duration: 1 }}
                 className="absolute bottom-12 left-0 w-full z-10 flex flex-col items-center gap-4"
             >
-                <span className="text-[10px] uppercase tracking-[0.25em] pl-[0.25em] text-slate-500 font-medium">Scroll to Explore</span>
-                <div className="w-[1px] h-16 bg-gradient-to-b from-accent-primary/50 to-transparent" />
+                <div className="w-6 h-10 rounded-full border-2 border-white/10 flex justify-center p-2">
+                    <motion.div
+                        animate={{ y: [0, 12, 0] }}
+                        transition={{ duration: 1.5, repeat: Infinity }}
+                        className="w-1.5 h-1.5 rounded-full bg-accent-primary"
+                    />
+                </div>
             </motion.div>
         </section>
     );

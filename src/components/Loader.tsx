@@ -2,7 +2,7 @@ import { motion } from 'framer-motion';
 import { useState, useEffect } from 'react';
 import { techSkills } from '../data/techLogos';
 
-export const Loader = () => {
+export const Loader = ({ onComplete }: { onComplete?: () => void }) => {
     const [progress, setProgress] = useState(0);
 
     useEffect(() => {
@@ -30,11 +30,14 @@ export const Loader = () => {
             setProgress(prev => {
                 if (prev >= 100) {
                     clearInterval(interval);
+                    if (onComplete) {
+                        setTimeout(onComplete, 1000); // Small delay for the fade-out
+                    }
                     return 100;
                 }
                 return prev + 1;
             });
-        }, 20);
+        }, 15);
 
         return () => clearInterval(interval);
     }, []);
@@ -74,12 +77,14 @@ export const Loader = () => {
                     initial={{ scale: 0.8, opacity: 0 }}
                     animate={{ scale: 1, opacity: 1 }}
                     transition={{ duration: 0.5 }}
-                    className="text-center"
+                    className="flex flex-col items-center gap-4"
                 >
-                    <h1 className="text-6xl md:text-8xl font-bold bg-gradient-to-r from-purple-400 via-pink-400 to-blue-400 bg-clip-text text-transparent font-heading tracking-tight">
-                        JD
-                    </h1>
-                    <p className="text-purple-300/70 text-sm md:text-base mt-2 tracking-widest uppercase">
+                    <div className="w-24 h-24 rounded-3xl bg-gradient-to-br from-accent-primary via-purple-500 to-accent-primary-muted flex items-center justify-center p-[3px] shadow-[0_0_50px_rgba(147,51,234,0.3)]">
+                        <div className="w-full h-full bg-[#0b0616] rounded-[22px] flex items-center justify-center">
+                            <h1 className="text-4xl font-black text-white font-heading tracking-tighter">JD</h1>
+                        </div>
+                    </div>
+                    <p className="text-purple-300/70 text-sm md:text-base mt-2 tracking-[0.4em] uppercase font-bold">
                         Jenil Diyora
                     </p>
                 </motion.div>

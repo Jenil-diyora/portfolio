@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jenil Diyora - Professional Resume</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Outfit:wght@400;600;700&display=swap"
+        rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        heading: ['Outfit', 'sans-serif'],
+                    },
+                    colors: {
+                        accent: {
+                            primary: '#7c3aed',
+                            secondary: '#4f46e5',
+                            dark: '#1e1b4b',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        :root {
+            --a4-width: 210mm;
+            --a4-height: 297mm;
+        }
+
+        @page {
+            size: A4;
+            margin: 0;
+        }
+
+        @media print {
+            body {
+                background: white;
+                margin: 0;
+                padding: 0;
+            }
+
+            .no-print {
+                display: none !important;
+            }
+
+            .resume-page {
+                box-shadow: none !important;
+                border: none !important;
+                margin: 0 !important;
+                border-radius: 0 !important;
+                width: var(--a4-width) !important;
+                min-height: var(--a4-height) !important;
+                padding: 12mm !important;
+            }
+        }
+
+        body {
+            background-color: #f8fafc;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 40px 0;
+            -webkit-print-color-adjust: exact;
+            print-color-adjust: exact;
+        }
+
+        .resume-page {
+            width: var(--a4-width);
+            min-height: var(--a4-height);
+            background: white;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.1);
+            padding: 12mm;
+            position: relative;
+            border: 1px solid #e2e8f0;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .section-title {
+            font-family: 'Outfit', sans-serif;
+            position: relative;
+            display: inline-block;
+            margin-bottom: 1rem;
+            color: #1e293b;
+            font-weight: 700;
+            letter-spacing: -0.01em;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 20px;
+            height: 2px;
+            background-color: #7c3aed;
+        }
+
+        .skill-badge {
+            background-color: #f1f5f9;
+            color: #475569;
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-size: 10px;
+            font-weight: 600;
+            border: 1px solid #e2e8f0;
+        }
+
+        /* Scrollbar for preview */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #f1f5f9;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #cbd5e1;
+            border-radius: 4px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: #94a3b8;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="no-print mb-6 sticky top-4 z-50">
+        <button onclick="window.print()"
+            class="bg-accent-primary hover:bg-accent-dark text-white px-8 py-3 rounded-full font-bold text-sm transition-all shadow-xl flex items-center gap-2 group transform hover:scale-105 active:scale-95">
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M6 9V2h12v7"></path>
+                <path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"></path>
+                <rect x="6" y="14" width="12" height="8"></rect>
+            </svg>
+            Print Professional Resume
+        </button>
+    </div>
+
+    <div class="resume-page">
+        <!-- Header Design -->
+        <header class="flex justify-between items-start border-b-2 border-slate-100 pb-6 mb-6">
+            <div class="flex-1">
+                <h1 class="text-4xl font-extrabold font-heading text-slate-900 tracking-tight leading-none mb-2">
+                    JENIL <span class="text-accent-primary">DIYORA</span>
+                </h1>
+                <p class="text-lg font-medium text-slate-600 tracking-wide uppercase">Full Stack Software Engineer</p>
+                <div class="mt-4 flex flex-wrap gap-x-6 gap-y-2 text-[11px] text-slate-500 font-medium">
+                    <div class="flex items-center gap-1.5">
+                        <svg class="w-3.5 h-3.5 text-accent-primary" fill="none" stroke="currentColor"
+                            viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z">
+                            </path>
+                        </svg>
+                        diyorajenil23@gmail.com
+                    </div>
+                    <div class="flex items-center gap-1.5">
+                        <svg class="w-3.5 h-3.5 text-accent-primary" fill="none" stroke="currentColor"
+                            viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z">
+                            </path>
+                        </svg>
+                        Surat, Gujarat, India
+                    </div>
+                    <div class="flex items-center gap-1.5">
+                        <svg class="w-3.5 h-3.5 text-accent-primary" xmlns="http://www.w3.org/2000/svg"
+                            viewBox="0 0 24 24" fill="currentColor">
+                            <path
+                                d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" />
+                        </svg>
+                        linkedin.com/in/jenil-diyora-061380360/
+                    </div>
+                </div>
+            </div>
+            <div class="hidden">
+                <!-- Add QR code or something here if needed -->
+            </div>
+        </header>
+
+        <main class="grid grid-cols-12 gap-8 flex-grow">
+            <!-- Main Content -->
+            <div class="col-span-8 space-y-6">
+                <!-- Summary -->
+                <section>
+                    <h2 class="section-title text-sm uppercase tracking-widest">About Me</h2>
+                    <p class="text-slate-600 text-[12px] leading-relaxed text-justify mt-2">
+                        Forward-thinking Software Engineer with a passion for building scalable, high-performance web
+                        architectures.
+                        Expertise in <span class="text-slate-900 font-semibold">React.js</span> and <span
+                            class="text-slate-900 font-semibold">.NET Core</span>.
+                        Dedicated to clean code principles, functional programming, and creating fluid user experiences
+                        that solve real-world problems.
+                    </p>
+                </section>
+
+                <!-- Experience -->
+                <section>
+                    <h2 class="section-title text-sm uppercase tracking-widest">Professional Experience</h2>
+                    <div class="space-y-4 mt-2">
+                        <!-- Role 1 -->
+                        <div class="relative pl-4 border-l-2 border-slate-100">
+                            <div
+                                class="absolute -left-[9px] top-0 w-4 h-4 rounded-full bg-white border-2 border-accent-primary">
+                            </div>
+                            <div class="flex justify-between items-baseline mb-1">
+                                <h3 class="text-sm font-bold text-slate-900">Software Developer</h3>
+                                <span
+                                    class="text-[10px] font-bold text-accent-primary bg-accent-primary/5 px-2 py-0.5 rounded">2024
+                                    — PRESENT</span>
+                            </div>
+                            <p
+                                class="text-[11px] font-bold text-slate-500 uppercase tracking-tight flex items-center gap-1.5 mb-2">
+                                <span class="w-1 h-1 rounded-full bg-slate-400"></span>
+                                Engross Infotech
+                            </p>
+                            <ul class="text-[11px] text-slate-600 space-y-1.5 list-none">
+                                <li class="flex gap-2">
+                                    <span class="text-accent-primary mt-1">•</span>
+                                    <span>Spearheading full-stack development using <span
+                                            class="font-semibold text-slate-800">React.js</span> and <span
+                                            class="font-semibold text-slate-800">.NET Core</span> for enterprise
+                                        clients.</span>
+                                </li>
+                                <li class="flex gap-2">
+                                    <span class="text-accent-primary mt-1">•</span>
+                                    <span>Architecting scalable microservices and high-performance Web APIs with
+                                        optimized <span class="font-semibold text-slate-800">SQL Server</span> database
+                                        schemas.</span>
+                                </li>
+                                <li class="flex gap-2">
+                                    <span class="text-accent-primary mt-1">•</span>
+                                    <span>Implementing <span class="font-semibold text-slate-800">Clean
+                                            Architecture</span> patterns to ensure maintainability and testability of
+                                        core modules.</span>
+                                </li>
+                            </ul>
+                        </div>
+
+                        <!-- Role 2 -->
+                        <div class="relative pl-4 border-l-2 border-slate-100">
+                            <div
+                                class="absolute -left-[9px] top-0 w-4 h-4 rounded-full bg-white border-2 border-slate-200">
+                            </div>
+                            <div class="flex justify-between items-baseline mb-1">
+                                <h3 class="text-sm font-bold text-slate-900">Junior Software Engineer (Intern)</h3>
+                                <span class="text-[10px] font-bold text-slate-400 bg-slate-50 px-2 py-0.5 rounded">2023
+                                    — 2024</span>
+                            </div>
+                            <p
+                                class="text-[11px] font-bold text-slate-500 uppercase tracking-tight flex items-center gap-1.5 mb-2">
+                                <span class="w-1 h-1 rounded-full bg-slate-400"></span>
+                                Engross Infotech
+                            </p>
+                            <ul class="text-[11px] text-slate-600 space-y-1.5 list-none">
+                                <li class="flex gap-2">
+                                    <span class="text-slate-300 mt-1">•</span>
+                                    <span>Collaborated with senior engineers to build responsive web components using
+                                        Modern JavaScript and CSS.</span>
+                                </li>
+                                <li class="flex gap-2">
+                                    <span class="text-slate-300 mt-1">•</span>
+                                    <span>Gained hands-on experience in the complete software development lifecycle
+                                        (SDLC) and Agile methodologies.</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Key Projects -->
+                <section>
+                    <h2 class="section-title text-sm uppercase tracking-widest">Key Projects</h2>
+                    <div class="space-y-3 mt-2 text-[11px]">
+                        <div>
+                            <h3 class="font-bold text-slate-800 flex items-center gap-2">
+                                Premium Portfolio System
+                                <span class="text-[9px] font-normal text-slate-400">React, Framer Motion,
+                                    Tailwind</span>
+                            </h3>
+                            <p class="text-slate-600 leading-snug mt-1">Built a high-performance interactive portfolio
+                                with smooth scroll (Lenis) and advanced animations, showcasing complex component
+                                architectures.</p>
+                        </div>
+                        <div>
+                            <h3 class="font-bold text-slate-800 flex items-center gap-2">
+                                Enterprise ERP Module
+                                <span class="text-[9px] font-normal text-slate-400">.NET Core, SQL Server, React</span>
+                            </h3>
+                            <p class="text-slate-600 leading-snug mt-1">Developed core inventory management modules for
+                                internal enterprise use, focusing on high-volume data transactions and reporting.</p>
+                        </div>
+                    </div>
+                </section>
+            </div>
+
+            <!-- Sidebar -->
+            <div class="col-span-4 space-y-6">
+                <!-- Education -->
+                <section>
+                    <h2 class="section-title text-sm uppercase tracking-widest">Education</h2>
+                    <div class="mt-2 text-sm leading-tight">
+                        <h3 class="text-[12px] font-bold text-slate-900 leading-tight">BSc in IT</h3>
+                        <p class="text-[10px] font-semibold text-accent-primary uppercase mt-1">Pursuing</p>
+                        <p class="text-[11px] text-slate-600 mt-0.5">SSIU (Swarnim Startup & Innovation University)</p>
+                    </div>
+                </section>
+
+                <!-- Technical Skills -->
+                <section>
+                    <h2 class="section-title text-sm uppercase tracking-widest">Expertise</h2>
+                    <div class="space-y-3 mt-2">
+                        <div>
+                            <p class="text-[10px] font-bold text-slate-400 uppercase tracking-tighter mb-2">Frontend</p>
+                            <div class="flex flex-wrap gap-1.5">
+                                <span class="skill-badge">React JS</span>
+                                <span class="skill-badge">TypeScript</span>
+                                <span class="skill-badge">Tailwind CSS</span>
+                                <span class="skill-badge">JavaScript</span>
+                                <span class="skill-badge">Next.js</span>
+                            </div>
+                        </div>
+                        <div>
+                            <p class="text-[10px] font-bold text-slate-400 uppercase tracking-tighter mb-2">Backend</p>
+                            <div class="flex flex-wrap gap-1.5">
+                                <span class="skill-badge">.NET Core</span>
+                                <span class="skill-badge">C#</span>
+                                <span class="skill-badge">Web API</span>
+                                <span class="skill-badge">Entity Framework</span>
+                                <span class="skill-badge">Node.js</span>
+                            </div>
+                        </div>
+                        <div>
+                            <p class="text-[10px] font-bold text-slate-400 uppercase tracking-tighter mb-2">Data & Cloud
+                            </p>
+                            <div class="flex flex-wrap gap-1.5">
+                                <span class="skill-badge">PostgreSQL</span>
+                                <span class="skill-badge">MS SQL</span>
+                                <span class="skill-badge">Firebase</span>
+                                <span class="skill-badge">Azure</span>
+                            </div>
+                        </div>
+                        <div>
+                            <p class="text-[10px] font-bold text-slate-400 uppercase tracking-tighter mb-2">Tools</p>
+                            <div class="flex flex-wrap gap-1.5">
+                                <span class="skill-badge">Git</span>
+                                <span class="skill-badge">Postman</span>
+                                <span class="skill-badge">Docker</span>
+                                <span class="skill-badge">Swagger</span>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Languages -->
+                <section>
+                    <h2 class="section-title text-sm uppercase tracking-widest">Languages</h2>
+                    <div class="mt-2 space-y-2 text-[11px]">
+                        <div class="flex justify-between items-center">
+                            <span class="text-slate-600">English</span>
+                            <span class="text-[9px] font-bold text-slate-400 uppercase">Professional</span>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span class="text-slate-600">Gujarati</span>
+                            <span class="text-[9px] font-bold text-slate-400 uppercase">Native</span>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span class="text-slate-600">Hindi</span>
+                            <span class="text-[9px] font-bold text-slate-400 uppercase">Fluent</span>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Interests -->
+                <section>
+                    <h2 class="section-title text-sm uppercase tracking-widest">Interests</h2>
+                    <p class="text-[11px] text-slate-600 mt-2 leading-relaxed">
+                        Open Source Contribution, UI/UX Design Trends, System Architecture, and Continuous Learning in
+                        AI/ML.
+                    </p>
+                </section>
+            </div>
+        </main>
+
+        <!-- Footer Design -->
+        <footer
+            class="mt-auto pt-4 border-t border-slate-50 flex justify-between items-center text-[9px] text-slate-400 uppercase tracking-[0.2em] font-medium">
+            <span>Jenil Diyora • Software Engineer</span>
+            <span>Generated for Excellence</span>
+        </footer>
+
+        <!-- Subtle watermark/pattern -->
+        <div class="absolute top-0 right-0 w-64 h-64 bg-accent-primary/5 rounded-full blur-3xl -mr-32 -mt-32"></div>
+        <div class="absolute bottom-0 left-0 w-48 h-48 bg-accent-primary/5 rounded-full blur-3xl -ml-24 -mb-24"></div>
+    </div>
+
+    <!-- Instructions for screen view -->
+    <div class="no-print mt-8 text-slate-400 text-sm font-medium flex flex-col items-center gap-2">
+        <p>Best viewed on Desktop • Press Ctrl+P to save as PDF</p>
+        <div class="flex gap-4 mt-4">
+            <a href="/" class="hover:text-accent-primary transition-colors flex items-center gap-1">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path d="M10 19l-7-7m0 0l7-7m-7 7h18" />
+                </svg>
+                Back to Portfolio
+            </a>
+        </div>
+    </div>
+</body>
+
+</html>
