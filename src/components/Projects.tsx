@@ -3,21 +3,38 @@ import { ExternalLink, Github, ArrowUpRight, Globe, Shield, Zap } from 'lucide-r
 import { SectionWrapper } from './SectionWrapper';
 import { useRef } from 'react';
 import pulseflowImg from '../assets/pulseflow.png';
+import clearbookImg from '../assets/clearbook-dashboard.png';
 
-const project = {
-    id: 1,
-    title: "PulseFlow",
-    category: "Mobile Application",
-    image: pulseflowImg,
-    description: "A high-performance personal project built for Android. Currently refining core mechanics and UI for an upcoming Google Play Store deployment. Features real-time state management and fluid gesture-based interactions.",
-    tech: ["React Native", "TypeScript", "Firebase", "Redux"],
-    stats: [
-        { label: "Performance", value: "99%", icon: Zap },
-        { label: "Security", value: "End-to-End", icon: Shield },
-        { label: "Stability", value: "99.9%", icon: Globe }
-    ],
-    links: { live: "#", github: "https://github.com/Jenil-diyora" }
-};
+const projects = [
+    {
+        id: 1,
+        title: "PulseFlow",
+        category: "Mobile Application",
+        image: pulseflowImg,
+        description: "A high-performance personal project built for Android. Refining core mechanics and UI for an upcoming Google Play Store deployment. Features real-time state management and fluid gesture-based interactions.",
+        tech: ["React Native", "TypeScript", "Firebase", "Redux"],
+        stats: [
+            { label: "Performance", value: "99%", icon: Zap },
+            { label: "Security", value: "End-to-End", icon: Shield },
+            { label: "Stability", value: "99.9%", icon: Globe }
+        ],
+        links: { live: "#", github: "https://github.com/Jenil-diyora" }
+    },
+    {
+        id: 2,
+        title: "ClearBook",
+        category: "Full-Stack SaaS Application",
+        image: clearbookImg,
+        description: "A premium billing and invoicing dashboard built for speed and portability. Features a custom light Slate UI, automated SQLite migrations, secure JWT session management with auto-logout, and clean relational database schemas.",
+        tech: [".NET 8", "React", "Redux Toolkit", "SQLite", "EF Core"],
+        stats: [
+            { label: "REST APIs", value: "10+ Endpoints", icon: Zap },
+            { label: "Theme", value: "Slate Light", icon: Shield },
+            { label: "Database", value: "SQL / SQLite", icon: Globe }
+        ],
+        links: { live: "https://clearbook-production.up.railway.app", github: "https://github.com/Jenil-diyora/ClearBook" }
+    }
+];
 
 export const Projects = () => {
     const containerRef = useRef<HTMLDivElement>(null);
@@ -50,91 +67,97 @@ export const Projects = () => {
                         whileInView={{ opacity: 1, y: 0 }}
                         className="text-4xl md:text-7xl font-bold font-heading text-white"
                     >
-                        The <span className="text-accent-primary">Masterpiece</span>
+                        The <span className="text-accent-primary">Masterpieces</span>
                     </motion.h2>
                 </div>
 
-                <div className="grid lg:grid-cols-2 gap-10 md:gap-20 items-center">
-                    {/* Interactive Frame */}
-                    <div className="relative group order-2 lg:order-1">
-                        <motion.div
-                            style={{ y, rotate }}
-                            className="relative z-20 w-full max-w-[600px] mx-auto overflow-hidden rounded-3xl bg-gradient-to-br from-accent-primary/10 to-transparent p-4 sm:p-8 shadow-2xl shadow-accent-primary/30 backdrop-blur-sm border border-white/10"
-                        >
-                            <img
-                                src={project.image}
-                                alt={project.title}
-                                className="w-full h-auto object-cover rounded-2xl transition-transform duration-1000 group-hover:scale-105"
-                            />
+                <div className="space-y-32">
+                    {projects.map((project, index) => {
+                        const isEven = index % 2 === 0;
+                        return (
+                            <div key={project.id} className="grid lg:grid-cols-2 gap-10 md:gap-20 items-center">
+                                {/* Interactive Frame */}
+                                <div className={`relative group ${isEven ? 'order-2 lg:order-1' : 'order-2'}`}>
+                                    <motion.div
+                                        style={{ y, rotate: isEven ? rotate : useTransform(scrollYProgress, [0, 1], [-5, 5]) }}
+                                        className="relative z-20 w-full max-w-[600px] mx-auto overflow-hidden rounded-3xl bg-gradient-to-br from-accent-primary/10 to-transparent p-4 sm:p-8 shadow-2xl shadow-accent-primary/30 backdrop-blur-sm border border-white/10"
+                                    >
+                                        <img
+                                            src={project.image}
+                                            alt={project.title}
+                                            className="w-full h-auto object-cover rounded-2xl transition-transform duration-1000 group-hover:scale-105"
+                                        />
+                                        {/* Overlay */}
+                                        <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent pointer-events-none" />
+                                    </motion.div>
 
-                            {/* Overlay */}
-                            <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent pointer-events-none" />
+                                    {/* Floating elements */}
+                                    <motion.div
+                                        animate={{ y: [-10, 10, -10], x: [-5, 5, -5] }}
+                                        transition={{ duration: 5 + index, repeat: Infinity }}
+                                        className="absolute -top-6 md:-top-10 right-0 md:-right-10 w-32 md:w-40 p-3 md:p-4 rounded-2xl glass-card border border-white/10 z-30 shadow-xl"
+                                    >
+                                        <div className="flex items-center gap-2 md:gap-3 mb-2">
+                                            <Zap className="w-3 md:w-4 h-3 md:h-4 text-yellow-400" />
+                                            <span className="text-[8px] md:text-[10px] font-bold text-white uppercase tracking-widest">Performance</span>
+                                        </div>
+                                        <div className="h-1 w-full bg-white/5 rounded-full overflow-hidden">
+                                            <div className="h-full w-[99%] bg-accent-primary" />
+                                        </div>
+                                    </motion.div>
+                                </div>
 
+                                {/* Content Section */}
+                                <div className={`space-y-8 md:space-y-10 ${isEven ? 'order-1 lg:order-2' : 'order-1'}`}>
+                                    <div className="space-y-4">
+                                        <span className="text-accent-primary font-bold text-xs md:text-sm tracking-widest uppercase">{project.category}</span>
+                                        <h3 className="text-3xl md:text-6xl font-bold text-white leading-tight">
+                                            {project.title} <br />
+                                            <span className="text-accent-primary-muted italic">Fluid</span> Experiences
+                                        </h3>
+                                        <p className="text-rich-text-muted text-base md:text-lg leading-relaxed max-w-xl">
+                                            {project.description}
+                                        </p>
+                                    </div>
 
-                        </motion.div>
+                                    <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 md:gap-6">
+                                        {project.stats.map((stat, i) => (
+                                            <div key={i} className="p-4 rounded-2xl bg-white/5 border border-white/10 flex sm:flex-col items-center sm:items-start gap-4 sm:gap-0">
+                                                <stat.icon className="w-5 h-5 text-accent-primary sm:mb-3 flex-shrink-0" />
+                                                <div>
+                                                    <div className="text-xl md:text-2xl font-bold text-white mb-0 sm:mb-1">{stat.value}</div>
+                                                    <div className="text-[10px] text-gray-400 uppercase tracking-widest">{stat.label}</div>
+                                                </div>
+                                            </div>
+                                        ))}
+                                    </div>
 
-                        {/* Floating elements */}
-                        <motion.div
-                            animate={{ y: [-10, 10, -10], x: [-5, 5, -5] }}
-                            transition={{ duration: 5, repeat: Infinity }}
-                            className="absolute -top-6 md:-top-10 right-0 md:-right-10 w-32 md:w-40 p-3 md:p-4 rounded-2xl glass-card border border-white/10 z-30 shadow-xl"
-                        >
-                            <div className="flex items-center gap-2 md:gap-3 mb-2">
-                                <Zap className="w-3 md:w-4 h-3 md:h-4 text-yellow-400" />
-                                <span className="text-[8px] md:text-[10px] font-bold text-white uppercase tracking-widest">Performance</span>
-                            </div>
-                            <div className="h-1 w-full bg-white/5 rounded-full overflow-hidden">
-                                <div className="h-full w-[99%] bg-accent-primary" />
-                            </div>
-                        </motion.div>
-                    </div>
+                                    <div className="flex flex-wrap gap-2 md:gap-3">
+                                        {project.tech.map((t) => (
+                                            <span key={t} className="px-3 md:px-5 py-1.5 md:py-2 rounded-full bg-accent-primary/10 border border-accent-primary/20 text-[10px] md:text-xs font-bold text-white uppercase tracking-widest whitespace-nowrap">
+                                                {t}
+                                            </span>
+                                        ))}
+                                    </div>
 
-                    {/* Content Section */}
-                    <div className="order-1 lg:order-2 space-y-8 md:space-y-10">
-                        <div className="space-y-4">
-                            <span className="text-accent-primary font-bold text-xs md:text-sm tracking-widest uppercase">{project.category}</span>
-                            <h3 className="text-3xl md:text-6xl font-bold text-white leading-tight">
-                                Delivering <br />
-                                <span className="text-accent-primary-muted italic">Fluid</span> Experiences
-                            </h3>
-                            <p className="text-rich-text-muted text-base md:text-lg leading-relaxed max-w-xl">
-                                {project.description}
-                            </p>
-                        </div>
-
-                        <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 md:gap-6">
-                            {project.stats.map((stat, i) => (
-                                <div key={i} className="p-4 rounded-2xl bg-white/5 border border-white/10 flex sm:flex-col items-center sm:items-start gap-4 sm:gap-0">
-                                    <stat.icon className="w-5 h-5 text-accent-primary sm:mb-3 flex-shrink-0" />
-                                    <div>
-                                        <div className="text-xl md:text-2xl font-bold text-white mb-0 sm:mb-1">{stat.value}</div>
-                                        <div className="text-[10px] text-gray-400 uppercase tracking-widest">{stat.label}</div>
+                                    <div className="flex flex-col sm:flex-row items-start sm:items-center gap-6 sm:gap-8 pt-6 md:pt-8 border-t border-white/5">
+                                        <a href={project.links.github} target="_blank" rel="noopener noreferrer" className="flex items-center gap-3 text-xs md:text-sm font-bold text-gray-400 hover:text-white transition-colors group/link">
+                                            <Github className="w-4 md:w-5 h-4 md:h-5" />
+                                            <span>View Source</span>
+                                            <ArrowUpRight className="w-3 md:w-4 h-3 md:h-4 group-hover/link:translate-x-1 group-hover/link:-translate-y-1 transition-transform" />
+                                        </a>
+                                        {project.links.live !== "#" && (
+                                            <a href={project.links.live} target="_blank" rel="noopener noreferrer" className="flex items-center gap-3 text-xs md:text-sm font-bold text-gray-400 hover:text-white transition-colors group/link">
+                                                <ExternalLink className="w-4 md:w-5 h-4 md:h-5" />
+                                                <span>Live System</span>
+                                                <ArrowUpRight className="w-3 md:w-4 h-3 md:h-4 group-hover/link:translate-x-1 group-hover/link:-translate-y-1 transition-transform" />
+                                            </a>
+                                        )}
                                     </div>
                                 </div>
-                            ))}
-                        </div>
-
-                        <div className="flex flex-wrap gap-2 md:gap-3">
-                            {project.tech.map((t) => (
-                                <span key={t} className="px-3 md:px-5 py-1.5 md:py-2 rounded-full bg-accent-primary/10 border border-accent-primary/20 text-[10px] md:text-xs font-bold text-white uppercase tracking-widest whitespace-nowrap">
-                                    {t}
-                                </span>
-                            ))}
-                        </div>
-
-                        <div className="flex flex-col sm:flex-row items-start sm:items-center gap-6 sm:gap-8 pt-6 md:pt-8 border-t border-white/5">
-                            <a href={project.links.github} className="flex items-center gap-3 text-xs md:text-sm font-bold text-gray-400 hover:text-white transition-colors group/link">
-                                <Github className="w-4 md:w-5 h-4 md:h-5" />
-                                <span>View Source</span>
-                                <ArrowUpRight className="w-3 md:w-4 h-3 md:h-4 group-hover/link:translate-x-1 group-hover/link:-translate-y-1 transition-transform" />
-                            </a>
-                            <a href={project.links.live} className="flex items-center gap-3 text-xs md:text-sm font-bold text-gray-400 hover:text-white transition-colors group/link">
-                                <ExternalLink className="w-4 md:w-5 h-4 md:h-5" />
-                                <span>Live System</span>
-                                <ArrowUpRight className="w-3 md:w-4 h-3 md:h-4 group-hover/link:translate-x-1 group-hover/link:-translate-y-1 transition-transform" />
-                            </a>
-                        </div>
-                    </div>
+                            </div>
+                        );
+                    })}
                 </div>
             </div>
         </SectionWrapper>
