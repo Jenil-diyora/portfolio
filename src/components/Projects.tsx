@@ -32,7 +32,7 @@ const projects = [
             { label: "Theme", value: "Slate Light", icon: Shield },
             { label: "Database", value: "SQL / SQLite", icon: Globe }
         ],
-        links: { live: "https://clearbook-production.up.railway.app", github: "https://github.com/Jenil-diyora/ClearBook" }
+        links: { live: "https://clearbook-production-5037.up.railway.app", github: "https://github.com/Jenil-diyora/ClearBook" }
     }
 ];
 
